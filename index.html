@@ -263,10 +263,10 @@ const EMPRESA = {
    ============================================================================ */
 const CATALOGO_DEFAULT = [
   // ---- Lanas Javi.xlsx / hoja " Poli" ----
-  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Design)", formato:"Espesor 50 mm · Formato 1,2 x 25 m (rollo 30 m2)", unidad:"m2", precioBase:1690},
-  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Design)", formato:"Espesor 80 mm · Formato 1,2 x 12 m (rollo 14,4 m2)", unidad:"m2", precioBase:2438},
-  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Val Company)", formato:"Espesor 50 mm sin traslape · Formato 1,2 x 12 m (rollo 14,4 m2)", unidad:"m2", precioBase:1100},
-  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (RTK)", formato:"Espesor 80 mm · Formato 1,2 x 25 m (rollo 30 m2)", unidad:"m2", precioBase:2650},
+  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno", formato:"Espesor 50 mm · Formato 1,2 x 25 m (rollo 30 m2)", unidad:"m2", precioBase:1690},
+  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno", formato:"Espesor 80 mm · Formato 1,2 x 12 m (rollo 14,4 m2)", unidad:"m2", precioBase:2438},
+  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno", formato:"Espesor 50 mm sin traslape · Formato 1,2 x 12 m (rollo 14,4 m2)", unidad:"m2", precioBase:1100},
+  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno", formato:"Espesor 80 mm · Formato 1,2 x 25 m (rollo 30 m2)", unidad:"m2", precioBase:2650},
   {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Malla soporte polipropileno", formato:"15 x 15 cm · Formato 1,5 x 1.000 m", unidad:"rollo", precioBase:115000},
   {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Cinta autoadhesiva polipropileno blanco", formato:"80 mm x 25 m (ancho x largo)", unidad:"rollo", precioBase:6990},
 
@@ -275,7 +275,7 @@ const CATALOGO_DEFAULT = [
   {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 100 kg/m3 · Espesor 50 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:7625},
   {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 80 kg/m3 · Espesor 80 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:11617},
   {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 140 kg/m3 · Espesor 50 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:13194},
-  {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Velo Negro Importado (Nicolaides)", formato:"Densidad 35 kg/m3 · Espesor 50 mm · Panel 0,5 x 1,2 m", unidad:"m2", precioBase:6350},
+  {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Velo Negro Importado", formato:"Densidad 35 kg/m3 · Espesor 50 mm · Panel 0,5 x 1,2 m", unidad:"m2", precioBase:6350},
   {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Rollo Lana Mineral de Roca c/malla una cara", formato:"Densidad 100 kg/m3 · Espesor 50 mm · Formato 5 x 0,6 m (3,0 m2)", unidad:"m2", precioBase:11850},
   {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Rollo Lana Mineral de Roca c/malla una cara", formato:"Densidad 100 kg/m3 · Espesor 100 mm · Formato 3 x 0,6 m (1,8 m2)", unidad:"m2", precioBase:18850.64},
 
@@ -669,10 +669,10 @@ function importarCatalogo(ev){
 /* ============ NÚMERO DE COTIZACIÓN: AAAAMMDD-NN (NN = correlativo del día) ============ */
 function sugerirNumero(){
   const hoy = new Date();
-  const yyyy = hoy.getFullYear();
+  const yy = String(hoy.getFullYear()).slice(-2);
   const mm = String(hoy.getMonth()+1).padStart(2,'0');
   const dd = String(hoy.getDate()).padStart(2,'0');
-  const fechaStr = "" + yyyy + mm + dd;
+  const fechaStr = "" + yy + mm + dd;
   const key = LS_CONTADOR_PREFIX + fechaStr;
   let contador = Number(localStorage.getItem(key) || "0") + 1;
   localStorage.setItem(key, String(contador));
@@ -729,14 +729,14 @@ function descargarPDF(modo){
   const ANCHO = PAG_W - M*2;
 
   // ---- Encabezado ----
-  try{ doc.addImage(document.getElementById('logo_fuente').src, 'PNG', M, 16, 50, 11.8); }catch(e){}
+  try{ doc.addImage(document.getElementById('logo_fuente').src, 'PNG', M, 18, 42, 9.9); }catch(e){}
 
-  doc.setFont("helvetica","normal"); doc.setFontSize(9.5); doc.setTextColor(...grisTxt);
-  doc.text("N° " + d.numero, PAG_W - M, 19, {align:"right"});
-  doc.text("Fecha: " + d.fecha, PAG_W - M, 24, {align:"right"});
+  doc.setFont("helvetica","normal"); doc.setFontSize(9); doc.setTextColor(...grisTxt);
+  doc.text("N° " + d.numero, PAG_W - M, 21, {align:"right"});
+  doc.text("Fecha: " + d.fecha, PAG_W - M, 26, {align:"right"});
 
-  let y = 42;
-  doc.setFont("helvetica","bold"); doc.setFontSize(18);
+  let y = 48;
+  doc.setFont("helvetica","bold"); doc.setFontSize(15);
   doc.setTextColor(...(color?azulOsc:negro));
   doc.text("COTIZACIÓN", M, y);
   doc.setDrawColor(...rojo); doc.setLineWidth(0.8);
