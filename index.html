@@ -19,20 +19,20 @@
     --gris-claro:#E8E8E8;
     --tinta:#1C1C1C;
     --papel:#FFFFFF;
-    --ok:#1c7d3a;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html,body{background:#F4F5F6; color:var(--tinta); font-family:'Poppins',sans-serif; line-height:1.5;}
   h1,h2,h3{font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:.01em;}
-  .wrap{max-width:1080px; margin:0 auto; padding:24px 18px 80px;}
-  header.top{background:var(--azul-oscuro); color:#fff; padding:22px 0;}
+  .wrap{max-width:1180px; margin:0 auto; padding:24px 18px 80px;}
+  header.top{background:var(--azul-oscuro); color:#fff; padding:22px 0; border-bottom:4px solid var(--rojo);}
   header.top .wrap{display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
   header.top img{height:34px; width:auto; background:#fff; padding:4px 10px; border-radius:4px;}
   header.top .titulo{font-family:'Oswald',sans-serif; font-size:22px; font-weight:600;}
   header.top .sub{font-size:12.5px; color:#cfe0f2; margin-top:2px;}
 
   .card{background:#fff; border:1px solid var(--gris-claro); border-radius:8px; padding:22px 24px; margin-bottom:22px; box-shadow:0 1px 3px rgba(0,0,0,.04);}
-  .card h2{font-size:16px; color:var(--azul-oscuro); text-transform:uppercase; letter-spacing:.06em; margin-bottom:16px; border-bottom:2px solid var(--gris-claro); padding-bottom:10px;}
+  .card h2{font-size:16px; color:var(--azul-oscuro); text-transform:uppercase; letter-spacing:.06em; margin-bottom:16px; border-bottom:2px solid var(--rojo); padding-bottom:10px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+  .card h2 .h2-extra{font-size:11px; text-transform:none; letter-spacing:0; color:var(--gris); font-weight:400;}
 
   .grid{display:grid; gap:14px;}
   .grid.cols-2{grid-template-columns:1fr 1fr;}
@@ -44,16 +44,26 @@
   input[type=text], input[type=date], input[type=email], input[type=number], select, textarea{
     width:100%; padding:9px 10px; border:1px solid #cfd3d6; border-radius:5px; font-family:inherit; font-size:14px; background:#fff;
   }
+  input:disabled{background:#f2f3f4; color:var(--gris);}
   input:focus, select:focus, textarea:focus{outline:2px solid var(--azul-claro); border-color:var(--azul);}
   textarea{resize:vertical; min-height:44px;}
 
-  table.items{width:100%; border-collapse:collapse; margin-top:6px; font-size:13.5px;}
-  table.items th{background:var(--azul-oscuro); color:#fff; text-align:left; padding:9px 8px; font-weight:500; font-size:12px; text-transform:uppercase; letter-spacing:.03em;}
-  table.items td{padding:8px 7px; border-bottom:1px solid var(--gris-claro); vertical-align:top;}
+  .margen-global{display:flex; align-items:center; gap:10px; background:#F5F8FB; border:1px solid var(--azul-claro); border-radius:6px; padding:10px 14px; margin-bottom:14px; flex-wrap:wrap;}
+  .margen-global label{margin:0; white-space:nowrap; font-size:12.5px;}
+  .margen-global input{width:80px;}
+  .margen-global .nota-inline{font-size:11.5px; color:var(--gris); flex:1; min-width:200px;}
+
+  .table-scroll{width:100%; overflow-x:auto;}
+  table.items{width:100%; min-width:980px; border-collapse:collapse; margin-top:6px; font-size:13px;}
+  table.items th{background:var(--azul-oscuro); color:#fff; text-align:left; padding:9px 7px; font-weight:500; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em;}
+  table.items td{padding:7px 6px; border-bottom:1px solid var(--gris-claro); vertical-align:top;}
   table.items tfoot td{border-top:2px solid var(--azul-oscuro); font-weight:600;}
-  .col-del{width:34px; text-align:center;}
+  .col-del{width:30px; text-align:center;}
   .btn-del{background:none; border:none; color:var(--rojo); font-size:18px; cursor:pointer; line-height:1;}
   .btn-del:hover{opacity:.7;}
+  .celda-base, .celda-total{font-variant-numeric:tabular-nums;}
+  .celda-base{color:var(--gris);}
+  .celda-final{font-weight:600; color:var(--azul-oscuro);}
 
   .btn{display:inline-flex; align-items:center; gap:8px; padding:11px 20px; border-radius:6px; font-size:14px; font-weight:600; border:none; cursor:pointer; font-family:inherit;}
   .btn-primary{background:var(--azul); color:#fff;}
@@ -63,7 +73,6 @@
   .btn-ghost{background:none; color:var(--gris); border:1px dashed var(--gris);}
   .btn-ghost:hover{color:var(--azul-oscuro); border-color:var(--azul-oscuro);}
   .btn-small{padding:6px 10px; font-size:12.5px;}
-  .btn-danger{background:#fff; color:var(--rojo); border:1.5px solid var(--rojo);}
 
   .totales{max-width:340px; margin-left:auto; margin-top:14px;}
   .totales table{width:100%; border-collapse:collapse; font-size:14px;}
@@ -74,8 +83,8 @@
   .acciones .btn{padding:15px 26px; font-size:15px;}
 
   details.admin summary{cursor:pointer; font-weight:600; color:var(--azul-oscuro); padding:6px 0;}
-  table.catalogo{width:100%; border-collapse:collapse; font-size:13px; margin-top:12px;}
-  table.catalogo th{background:var(--gris-claro); text-align:left; padding:7px 6px; font-size:11.5px; text-transform:uppercase;}
+  table.catalogo{width:100%; min-width:760px; border-collapse:collapse; font-size:13px; margin-top:12px;}
+  table.catalogo th{background:var(--gris-claro); text-align:left; padding:7px 6px; font-size:11px; text-transform:uppercase;}
   table.catalogo td{padding:6px; border-bottom:1px solid #eee;}
   table.catalogo input, table.catalogo select{padding:6px 7px; font-size:12.5px;}
 
@@ -103,7 +112,7 @@
 
 <div class="wrap">
 
-  <!-- DATOS DEL CLIENTE -->
+  <!-- DATOS DE LA COTIZACIÓN -->
   <div class="card">
     <h2>1 · Datos de la cotización</h2>
     <div class="grid cols-4">
@@ -128,39 +137,50 @@
 
   <!-- PRODUCTOS -->
   <div class="card">
-    <h2>2 · Productos cotizados</h2>
+    <h2>2 · Productos cotizados <span class="h2-extra">Precio base + % de recargo = precio final</span></h2>
+
+    <div class="margen-global">
+      <label for="f_margen_global" style="margin:0;">% recargo por defecto</label>
+      <input type="number" id="f_margen_global" value="10" min="0" step="0.5" onchange="onCambioMargenGlobal()">
+      <button class="btn btn-outline btn-small" onclick="aplicarMargenATodas()">Aplicar a todas las líneas</button>
+      <span class="nota-inline">El precio base sale del catálogo (costo interno). El % de recargo se puede cambiar en cada línea. <b>En el PDF solo se ve el precio final</b>, nunca el precio base ni el %.</span>
+    </div>
+
+    <div class="table-scroll">
     <table class="items">
       <thead>
         <tr>
-          <th style="width:16%">Categoría</th>
-          <th style="width:26%">Producto</th>
-          <th style="width:14%">Formato</th>
-          <th style="width:8%">Unidad</th>
-          <th style="width:9%">Cantidad</th>
-          <th style="width:11%">Precio ($)</th>
-          <th style="width:11%">Total ($)</th>
+          <th style="width:15%">Categoría</th>
+          <th style="width:20%">Producto</th>
+          <th style="width:7%">Unidad</th>
+          <th style="width:10%">Precio Base</th>
+          <th style="width:8%">% Rec.</th>
+          <th style="width:10%">Precio Final</th>
+          <th style="width:8%">Cantidad</th>
+          <th style="width:10%">Total ($)</th>
           <th class="col-del"></th>
         </tr>
       </thead>
       <tbody id="items_body"></tbody>
       <tfoot>
         <tr>
-          <td colspan="6" style="text-align:right;">Total Neto</td>
+          <td colspan="7" style="text-align:right;">Total Neto</td>
           <td id="t_neto">$0</td>
           <td></td>
         </tr>
         <tr>
-          <td colspan="6" style="text-align:right;">19% IVA</td>
+          <td colspan="7" style="text-align:right;">19% IVA</td>
           <td id="t_iva">$0</td>
           <td></td>
         </tr>
         <tr>
-          <td colspan="6" style="text-align:right; color:var(--azul-oscuro); font-size:15px;">TOTAL</td>
+          <td colspan="7" style="text-align:right; color:var(--azul-oscuro); font-size:15px;">TOTAL</td>
           <td id="t_total" style="color:var(--azul-oscuro); font-size:15px;">$0</td>
           <td></td>
         </tr>
       </tfoot>
     </table>
+    </div>
     <div class="fila-agregar">
       <button class="btn btn-outline btn-small" onclick="agregarItem()">+ Agregar producto</button>
       <button class="btn btn-ghost btn-small" onclick="agregarItem(true)">+ Línea personalizada</button>
@@ -185,24 +205,28 @@
     <button class="btn btn-primary" onclick="descargarPDF('color')">📄 Descargar PDF para Cliente (color)</button>
     <button class="btn btn-outline" onclick="descargarPDF('print')">🖨️ Descargar PDF para Imprimir (ahorro de tinta)</button>
   </div>
-  <p class="nota" style="text-align:center;">Ambos PDF contienen exactamente la misma información. La versión "Cliente" está pensada para enviar por correo o WhatsApp; la versión "Imprimir" usa solo líneas finas en blanco y negro para ahorrar tinta.</p>
+  <p class="nota" style="text-align:center;">Ambos PDF contienen exactamente la misma información y solo muestran el precio final (nunca el precio base ni el % de recargo). La versión "Cliente" está pensada para enviar por correo o WhatsApp; la versión "Imprimir" usa solo líneas finas en blanco y negro para ahorrar tinta.</p>
 
   <!-- CATALOGO -->
   <div class="card">
     <details class="admin" id="admin_panel">
       <summary>⚙️ Gestionar catálogo de productos <span class="badge" id="cat_count">0 productos</span></summary>
       <p class="nota" style="margin-top:10px;">
+        El <b>Precio Base</b> es el costo interno (viene de tus planillas). El precio que ve el cliente siempre se calcula
+        como Precio Base × (1 + % de recargo), y el % se define al armar cada cotización, no aquí.<br>
         Este catálogo se guarda <b>solo en este navegador</b> (no hay servidor). Si trabajas desde otro computador o navegador, usa
         <button class="catlink" onclick="exportarCatalogo()">exportar catálogo</button> aquí y
         <button class="catlink" onclick="document.getElementById('importar_input').click()">importar catálogo</button> allá, para mantenerlos iguales.
         <input type="file" id="importar_input" accept="application/json" style="display:none" onchange="importarCatalogo(event)">
       </p>
+      <div class="table-scroll">
       <table class="catalogo" id="tabla_catalogo">
         <thead>
-          <tr><th style="width:18%">Categoría</th><th style="width:32%">Producto</th><th style="width:20%">Formato</th><th style="width:10%">Unidad</th><th style="width:12%">Precio ($)</th><th style="width:8%"></th></tr>
+          <tr><th style="width:20%">Categoría (hoja de origen)</th><th style="width:26%">Producto</th><th style="width:22%">Formato</th><th style="width:9%">Unidad</th><th style="width:13%">Precio Base ($)</th><th style="width:6%"></th></tr>
         </thead>
         <tbody id="catalogo_body"></tbody>
       </table>
+      </div>
       <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
         <button class="btn btn-outline btn-small" onclick="agregarProductoCatalogo()">+ Agregar producto al catálogo</button>
         <button class="btn btn-ghost btn-small" onclick="restablecerCatalogo()">Restablecer catálogo por defecto</button>
@@ -227,40 +251,123 @@ const EMPRESA = {
   web: "www.skintec.cl"
 };
 
-/* ============ CATALOGO POR DEFECTO ============ */
+/* ============================================================================
+   CATALOGO POR DEFECTO
+   Cada "categoria" corresponde a UNA HOJA de los libros Excel de la carpeta
+   "productos" (Lanas Javi.xlsx, Promat Javi.xlsx, Volcanita Javi.xlsx).
+   "precioBase" = columna Costo / Precio Lista de cada planilla (antes del
+   margen). El margen que se ve en el cotizador siempre se aplica aparte
+   (por defecto 10%, editable), reemplazando los márgenes históricos
+   (10%–99%) que traían las planillas originales.
+   ============================================================================ */
 const CATALOGO_DEFAULT = [
-  {categoria:"Placas Promatect (Protección al Fuego)", nombre:"Placa Promatect H", formato:"6 x 1200 x 2400 mm", unidad:"un", precio:44476},
-  {categoria:"Placas Promatect (Protección al Fuego)", nombre:"Placa Promatect H", formato:"8 x 1200 x 2400 mm", unidad:"un", precio:59127},
-  {categoria:"Placas Promatect (Protección al Fuego)", nombre:"Placa Promatect H", formato:"10 x 1200 x 2400 mm", unidad:"un", precio:68546},
-  {categoria:"Placas Promatect (Protección al Fuego)", nombre:"Placa Promatect H", formato:"12 x 1200 x 2400 mm", unidad:"un", precio:82150},
-  {categoria:"Placas Promatect (Protección al Fuego)", nombre:"Placa Promatect H", formato:"15 x 1200 x 2400 mm", unidad:"un", precio:103865},
-  {categoria:"Placas Promatect (Protección al Fuego)", nombre:"Placa Promatect H", formato:"20 x 1200 x 2400 mm", unidad:"un", precio:138661},
-  {categoria:"Placas Cementicias", nombre:"Placa SAFEBOARD", formato:"0,625 x 2,5 m · Espesor 12,5 mm", unidad:"un", precio:111297},
-  {categoria:"Placas Cementicias", nombre:"Placa IMPACT", formato:"1200 x 2400 mm · Espesor 12,5 mm", unidad:"un", precio:13288},
-  {categoria:"Placas Cementicias", nombre:"Placa IMPACT", formato:"1200 x 2400 mm · Espesor 15 mm", unidad:"un", precio:13605},
-  {categoria:"Placas Cementicias", nombre:"Placa CLEANEO 8/15/20 R Circular Aleatoria Plus", formato:"1200 x 2000 mm · Espesor 12,5 mm", unidad:"m2", precio:45694},
-  {categoria:"Placas Yeso-Cartón (Volcanita)", nombre:"Placa Volcanita ST", formato:"10 x 1200 x 2400 mm", unidad:"un", precio:5147},
-  {categoria:"Placas Yeso-Cartón (Volcanita)", nombre:"Placa Volcanita ST", formato:"12,5 x 1200 x 2400 mm", unidad:"un", precio:6911},
-  {categoria:"Placas Yeso-Cartón (Volcanita)", nombre:"Placa Volcanita RH (resistente humedad)", formato:"12,5 x 1200 x 2400 mm", unidad:"un", precio:10983},
-  {categoria:"Lana de Vidrio", nombre:"Rollo Lana de Vidrio Polipropileno Blanco", formato:"Espesor 50 mm · 1,2 x 25 m", unidad:"m2", precio:2028},
-  {categoria:"Lana de Vidrio", nombre:"Rollo Lana de Vidrio Polipropileno Blanco", formato:"Espesor 80 mm · 1,2 x 12 m", unidad:"m2", precio:2926},
-  {categoria:"Lana de Vidrio", nombre:"Rollo Lana de Vidrio Aislanglass Libre", formato:"Espesor 50 mm · 1,2 x 12 m", unidad:"m2", precio:1394},
-  {categoria:"Lana de Vidrio", nombre:"Rollo Lana de Vidrio Aislanglass Libre", formato:"Espesor 80 mm · 1,2 x 12 m", unidad:"m2", precio:2712},
-  {categoria:"Lana Mineral (Volcán)", nombre:"Frazada Lana Mineral", formato:"Densidad 100 kg/m3 · Espesor 100 mm", unidad:"m2", precio:21733},
-  {categoria:"Lana Mineral (Volcán)", nombre:"Colchoneta ST Aislán Libre", formato:"Espesor 50 mm (bolsa 12 m2)", unidad:"m2", precio:4347},
-  {categoria:"Lana Mineral (Volcán)", nombre:"Panel Lana Mineral", formato:"Densidad 80 kg/m3 · Espesor 50 mm", unidad:"m2", precio:9493},
-  {categoria:"Bandas y Accesorios Acústicos", nombre:"Banda Elastoacústica Espuma Polietileno", formato:"Ancho 50 mm · Largo 30 m · Autoadhesiva", unidad:"rollo", precio:20499},
-  {categoria:"Bandas y Accesorios Acústicos", nombre:"Banda Elastoacústica Espuma Polietileno", formato:"Ancho 70 mm · Largo 30 m · Autoadhesiva", unidad:"rollo", precio:22710},
-  {categoria:"Servicios y Otros", nombre:"Masilla SAFEBOARD", formato:"Tineta de 5 kg", unidad:"un", precio:38069},
-  {categoria:"Servicios y Otros", nombre:"Flete a obra", formato:"Opcional, según ubicación", unidad:"gl", precio:95000}
+  // ---- Lanas Javi.xlsx / hoja " Poli" ----
+  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Design)", formato:"Espesor 50 mm · Formato 1,2 x 25 m (rollo 30 m2)", unidad:"m2", precioBase:1690},
+  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Design)", formato:"Espesor 80 mm · Formato 1,2 x 12 m (rollo 14,4 m2)", unidad:"m2", precioBase:2438},
+  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Val Company)", formato:"Espesor 50 mm sin traslape · Formato 1,2 x 12 m (rollo 14,4 m2)", unidad:"m2", precioBase:1100},
+  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (RTK)", formato:"Espesor 80 mm · Formato 1,2 x 25 m (rollo 30 m2)", unidad:"m2", precioBase:2650},
+  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Malla soporte polipropileno", formato:"15 x 15 cm · Formato 1,5 x 1.000 m", unidad:"rollo", precioBase:115000},
+  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Cinta autoadhesiva polipropileno blanco", formato:"80 mm x 25 m (ancho x largo)", unidad:"rollo", precioBase:6990},
+
+  // ---- Lanas Javi.xlsx / hoja "VAL Company" ----
+  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 80 kg/m3 · Espesor 50 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:6188},
+  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 100 kg/m3 · Espesor 50 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:7625},
+  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 80 kg/m3 · Espesor 80 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:11617},
+  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 140 kg/m3 · Espesor 50 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:13194},
+  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Velo Negro Importado (Nicolaides)", formato:"Densidad 35 kg/m3 · Espesor 50 mm · Panel 0,5 x 1,2 m", unidad:"m2", precioBase:6350},
+  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Rollo Lana Mineral de Roca c/malla una cara", formato:"Densidad 100 kg/m3 · Espesor 50 mm · Formato 5 x 0,6 m (3,0 m2)", unidad:"m2", precioBase:11850},
+  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Rollo Lana Mineral de Roca c/malla una cara", formato:"Densidad 100 kg/m3 · Espesor 100 mm · Formato 3 x 0,6 m (1,8 m2)", unidad:"m2", precioBase:18850.64},
+
+  // ---- Lanas Javi.xlsx / hoja "Banda E Acústica" ----
+  {categoria:"Bandas Elastoacústicas", nombre:"Banda Elastoacústica Espuma Polietileno", formato:"Ancho 50 mm · Largo 30 m · Autoadhesiva", unidad:"rollo", precioBase:16830},
+  {categoria:"Bandas Elastoacústicas", nombre:"Banda Elastoacústica Espuma Polietileno", formato:"Ancho 70 mm · Largo 30 m · Autoadhesiva", unidad:"rollo", precioBase:22710},
+
+  // ---- Lanas Javi.xlsx / hoja "Panel VN" ----
+  {categoria:"Panel Velo Negro (Ayrsa)", nombre:"Panel Velo Negro", formato:"Espesor 50 mm · Formato 1,2 x 2,4 m", unidad:"m2", precioBase:8200},
+
+  // ---- Lanas Javi.xlsx / hoja "Panel LM" ----
+  {categoria:"Panel Lana Mineral (Nacional)", nombre:"Panel Lana Mineral", formato:"Densidad 80 kg/m3 · Espesor 50 mm · Panel 0,5 x 1,2 m", unidad:"m2", precioBase:7700},
+  {categoria:"Panel Lana Mineral (Nacional)", nombre:"Panel Lana Mineral", formato:"Densidad 120 kg/m3 · Espesor 50 mm · Panel 0,5 x 1,2 m", unidad:"m2", precioBase:12700},
+
+  // ---- Lanas Javi.xlsx / hoja "Frazada Volcan" ----
+  {categoria:"Frazada Lana Mineral (Volcán)", nombre:"Frazada de Lana Mineral (malla una cara)", formato:"Densidad 100 kg/m3 · Espesor 100 mm · Panel 1,0 x 2,4 m", unidad:"m2", precioBase:22177},
+  {categoria:"Frazada Lana Mineral (Volcán)", nombre:"Frazada de Lana Mineral (malla una cara)", formato:"Densidad 100 kg/m3 · Espesor 100 mm · Rollo 3 x 0,6 m (1,8 m2)", unidad:"m2", precioBase:22177},
+  {categoria:"Frazada Lana Mineral (Volcán)", nombre:"Pallet (para despacho)", formato:"-", unidad:"un", precioBase:8000},
+
+  // ---- Lanas Javi.xlsx / hoja "Colchoneta ST" ----
+  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Libre", formato:"Espesor 40 mm R100 94 (bolsa 12 m2)", unidad:"m2", precioBase:3554},
+  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Libre", formato:"Espesor 50 mm R100 122 (bolsa 12 m2)", unidad:"m2", precioBase:3952},
+  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Libre", formato:"Espesor 80 mm R100 188 (bolsa 6 m2)", unidad:"m2", precioBase:6622},
+  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel una cara", formato:"Espesor 40 mm R100 95 (bolsa 12 m2)", unidad:"m2", precioBase:4214},
+  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel una cara", formato:"Espesor 50 mm R100 122 (bolsa 12 m2)", unidad:"m2", precioBase:5232},
+  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel una cara", formato:"Espesor 80 mm R100 188 (bolsa 6 m2)", unidad:"m2", precioBase:7159},
+  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel dos caras", formato:"Espesor 50 mm R100 122 (bolsa 12 m2)", unidad:"m2", precioBase:5758},
+  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel dos caras", formato:"Espesor 80 mm R100 188 (bolsa 6 m2)", unidad:"m2", precioBase:7938},
+
+  // ---- Lanas Javi.xlsx / hoja "Lana de vidrio" (Aislanglass original) ----
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 40 mm R100/94 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:1758},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 50 mm R100/122 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:1394},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 50 mm R100/122 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:1394},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 60 mm R100/141 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:2080},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 80 mm R100/188 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:2712},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 90 mm R100/212 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:2758},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 100 mm R100/235 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:3362},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 120 mm R100/262 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:4015},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 140 mm R100/329 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:4967},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 160 mm R100/376 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:5675},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 40 mm R100/94 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:2537},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 50 mm R100/122 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:2537},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 60 mm R100/141 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:2682},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 80 mm R100/188 · 1,2 x 9,6 m (11,52 m2)", unidad:"m2", precioBase:3303},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 100 mm R100/235 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:3962},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 120 mm R100/282 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:4614},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 140 mm R100/329 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:6380},
+  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 160 mm R100/376 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:7290},
+
+  // ---- Promat Javi.xlsx / hoja "Promat Septiembre 22" ----
+  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"6 x 1200 x 2400 mm (21 kg por placa)", unidad:"un", precioBase:38675},
+  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"8 x 1200 x 2400 mm (27 kg por placa)", unidad:"un", precioBase:51415},
+  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"10 x 1200 x 2400 mm (33 kg por placa)", unidad:"un", precioBase:59605},
+  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"12 x 1200 x 2400 mm (39 kg por placa)", unidad:"un", precioBase:71435},
+  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"15 x 1200 x 2400 mm (46 kg por placa)", unidad:"un", precioBase:90317},
+  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"20 x 1200 x 2400 mm (69 kg por placa)", unidad:"un", precioBase:120575},
+  {categoria:"Accesorios Promat", nombre:"Pasta para Juntas", formato:"Saco 25 kg (rendimiento ~350 gr x ml)", unidad:"un", precioBase:10831},
+  {categoria:"Accesorios Promat", nombre:"Promaseal A S", formato:"-", unidad:"un", precioBase:16242},
+  {categoria:"Accesorios Promat", nombre:"Bidón Impregnación", formato:"-", unidad:"un", precioBase:25935},
+  {categoria:"Accesorios Promat", nombre:"Promastop CC", formato:"Balde 12,5 kg", unidad:"un", precioBase:250613},
+
+  // ---- Volcanita Javi.xlsx / hoja " PY Junio 22" ----
+  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo ST", formato:"10 x 1200 x 2400 mm", unidad:"unidad", precioBase:4476.04},
+  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo ST", formato:"12,5 x 1200 x 2400 mm", unidad:"unidad", precioBase:6009.28},
+  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RH", formato:"12,5 x 1200 x 2400 mm", unidad:"unidad", precioBase:9550.28},
+  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RF", formato:"12,5 x 1200 x 2400 mm", unidad:"unidad", precioBase:6874.96},
+  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo ST", formato:"15 x 1200 x 2400 mm", unidad:"unidad", precioBase:6594.04},
+  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RH", formato:"15 x 1200 x 2400 mm", unidad:"unidad", precioBase:10412.04},
+  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RF", formato:"15 x 1200 x 2400 mm", unidad:"unidad", precioBase:7546},
+
+  // ---- Volcanita Javi.xlsx / hoja "Safe Board" ----
+  {categoria:"Placas Cementicias SAFEBOARD", nombre:"Placa SAFEBOARD", formato:"0,625 x 2,5 m · Espesor 12,5 mm", unidad:"unidad", precioBase:79498.125},
+  {categoria:"Placas Cementicias SAFEBOARD", nombre:"Masilla SAFEBOARD", formato:"Tineta de 5 kg", unidad:"unidad", precioBase:27192},
+
+  // ---- Volcanita Javi.xlsx / hoja "Impact" ----
+  {categoria:"Placas Cementicias IMPACT", nombre:"Placa IMPACT", formato:"1200 x 2400 mm · Espesor 12,5 mm", unidad:"unidad", precioBase:3845},
+  {categoria:"Placas Cementicias IMPACT", nombre:"Placa IMPACT", formato:"1200 x 2400 mm · Espesor 15 mm", unidad:"unidad", precioBase:3937},
+
+  // ---- Volcanita Javi.xlsx / hoja "Cleaneo" ----
+  {categoria:"Placas Acústicas CLEANEO", nombre:"Placa CLEANEO 8/15/20 R Circular Aleatoria Plus 12,5", formato:"1200 x 2000 mm UFF V/B (64)", unidad:"m2", precioBase:22847},
+
+  // ---- Común a varias hojas ----
+  {categoria:"Servicios y Otros", nombre:"Flete a obra", formato:"Opcional, según ubicación", unidad:"gl", precioBase:95000}
 ].map((p,i)=>({id:"cat_"+i, ...p}));
 
-const LS_CATALOGO = "skintec_cotizador_catalogo_v1";
-const LS_CONTADOR = "skintec_cotizador_contador_v1";
+const LS_CATALOGO = "skintec_cotizador_catalogo_v2";
+const LS_CONTADOR_PREFIX = "skintec_cotizador_contador_";
+const LS_MARGEN_DEFAULT = "skintec_cotizador_margen_default_v1";
 
 let catalogo = cargarCatalogo();
 let items = [];
 let seqItem = 1;
+let margenGlobalDefault = Number(localStorage.getItem(LS_MARGEN_DEFAULT) || "10");
 
 function cargarCatalogo(){
   try{
@@ -288,25 +395,47 @@ function categoriasUnicas(){
 function productosDeCategoria(cat){
   return catalogo.filter(p=>p.categoria===cat);
 }
+function etiquetaProducto(p){
+  return p.formato && p.formato!=="-" ? (p.nombre + " — " + p.formato) : p.nombre;
+}
+
+/* ============ MARGEN / PRECIO FINAL ============ */
+function precioFinalDeItem(it){
+  if(it.personalizado) return Number(it.precio)||0;
+  const base = Number(it.precioBase)||0;
+  const margen = Number(it.margen)||0;
+  return Math.round(base * (1 + margen/100));
+}
+function onCambioMargenGlobal(){
+  margenGlobalDefault = Number(document.getElementById('f_margen_global').value) || 0;
+  localStorage.setItem(LS_MARGEN_DEFAULT, String(margenGlobalDefault));
+}
+function aplicarMargenATodas(){
+  items.forEach(it=>{ if(!it.personalizado) it.margen = margenGlobalDefault; });
+  renderItems();
+  toast("Se aplicó " + margenGlobalDefault + "% a todas las líneas del catálogo.");
+}
 
 /* ============ ITEMS DE LA COTIZACIÓN ============ */
 function nuevoItem(personalizado){
   return {
     uid: seqItem++,
     personalizado: !!personalizado,
-    categoria: personalizado ? "" : (categoriasUnicas()[0]||""),
+    categoria: "",
     productoId: "",
     nombre: "", formato:"", unidad:"un",
-    cantidad: 1, precio: 0
+    cantidad: 1, precioBase: 0, margen: margenGlobalDefault, precio: 0
   };
 }
 function agregarItem(personalizado){
   const it = nuevoItem(personalizado);
   if(!personalizado){
+    const cats = categoriasUnicas();
+    it.categoria = cats[0] || "";
     const opciones = productosDeCategoria(it.categoria);
     if(opciones.length){
       const p = opciones[0];
-      it.productoId = p.id; it.nombre = p.nombre; it.formato = p.formato; it.unidad = p.unidad; it.precio = p.precio;
+      it.productoId = p.id; it.nombre = p.nombre; it.formato = p.formato; it.unidad = p.unidad; it.precioBase = p.precioBase;
     }
   }
   items.push(it);
@@ -322,27 +451,36 @@ function onCategoriaChange(uid, valor){
   const opciones = productosDeCategoria(valor);
   if(opciones.length){
     const p = opciones[0];
-    it.productoId = p.id; it.nombre = p.nombre; it.formato = p.formato; it.unidad = p.unidad; it.precio = p.precio;
+    it.productoId = p.id; it.nombre = p.nombre; it.formato = p.formato; it.unidad = p.unidad; it.precioBase = p.precioBase;
   } else {
-    it.productoId=""; it.nombre=""; it.formato=""; it.precio=0;
+    it.productoId=""; it.nombre=""; it.formato=""; it.precioBase=0;
   }
   renderItems();
 }
 function onProductoChange(uid, productoId){
   const it = items.find(i=>i.uid===uid);
   const p = catalogo.find(x=>x.id===productoId);
-  if(p){ it.productoId=p.id; it.nombre=p.nombre; it.formato=p.formato; it.unidad=p.unidad; it.precio=p.precio; }
+  if(p){ it.productoId=p.id; it.nombre=p.nombre; it.formato=p.formato; it.unidad=p.unidad; it.precioBase=p.precioBase; }
   renderItems();
 }
 function onCampoItem(uid, campo, valor){
   const it = items.find(i=>i.uid===uid);
   if(!it) return;
-  if(campo==="cantidad" || campo==="precio") it[campo] = Number(valor)||0;
+  if(campo==="cantidad" || campo==="margen" || campo==="precio" || campo==="precioBase") it[campo] = Number(valor)||0;
   else it[campo] = valor;
+  actualizarFilaCalculada(uid);
   renderTotales();
-  // actualizar solo la celda total de esa fila sin re-render completo
-  const totalCell = document.querySelector('tr[data-uid="'+uid+'"] .celda-total');
-  if(totalCell) totalCell.textContent = formatoCLP(it.cantidad*it.precio);
+}
+function actualizarFilaCalculada(uid){
+  const it = items.find(i=>i.uid===uid);
+  if(!it) return;
+  const tr = document.querySelector('tr[data-uid="'+uid+'"]');
+  if(!tr) return;
+  const pf = precioFinalDeItem(it);
+  const celdaFinal = tr.querySelector('.celda-final');
+  const celdaTotal = tr.querySelector('.celda-total');
+  if(celdaFinal) celdaFinal.textContent = formatoCLP(pf);
+  if(celdaTotal) celdaTotal.textContent = formatoCLP((Number(it.cantidad)||0) * pf);
 }
 
 function renderItems(){
@@ -352,41 +490,48 @@ function renderItems(){
   items.forEach(it=>{
     const tr = document.createElement('tr');
     tr.setAttribute('data-uid', it.uid);
+    const pf = precioFinalDeItem(it);
     if(it.personalizado){
       tr.innerHTML = `
-        <td colspan="2"><input type="text" placeholder="Nombre del producto" value="${escapeAttr(it.nombre)}" onchange="onCampoItem(${it.uid},'nombre',this.value)"></td>
-        <td><input type="text" placeholder="Formato" value="${escapeAttr(it.formato)}" onchange="onCampoItem(${it.uid},'formato',this.value)"></td>
+        <td><span style="font-size:12px; color:var(--gris);">Personalizado</span></td>
+        <td>
+          <input type="text" placeholder="Nombre del producto" value="${escapeAttr(it.nombre)}" onchange="onCampoItem(${it.uid},'nombre',this.value)" style="margin-bottom:4px;">
+          <input type="text" placeholder="Formato (opcional)" value="${escapeAttr(it.formato)}" onchange="onCampoItem(${it.uid},'formato',this.value)">
+        </td>
         <td>
           <select onchange="onCampoItem(${it.uid},'unidad',this.value)">
-            ${["un","m2","rollo","gl","kg","m"].map(u=>`<option value="${u}" ${it.unidad===u?'selected':''}>${u}</option>`).join("")}
+            ${["un","m2","rollo","gl","kg","m","unidad"].map(u=>`<option value="${u}" ${it.unidad===u?'selected':''}>${u}</option>`).join("")}
           </select>
         </td>
-        <td><input type="number" min="0" step="1" value="${it.cantidad}" onchange="onCampoItem(${it.uid},'cantidad',this.value)"></td>
+        <td class="celda-base">—</td>
+        <td>—</td>
         <td><input type="number" min="0" step="1" value="${it.precio}" onchange="onCampoItem(${it.uid},'precio',this.value)"></td>
-        <td class="celda-total">${formatoCLP(it.cantidad*it.precio)}</td>
+        <td><input type="number" min="0" step="1" value="${it.cantidad}" onchange="onCampoItem(${it.uid},'cantidad',this.value)"></td>
+        <td class="celda-total">${formatoCLP(it.cantidad*pf)}</td>
         <td class="col-del"><button class="btn-del" onclick="quitarItem(${it.uid})" title="Quitar">✕</button></td>`;
     } else {
       const opciones = productosDeCategoria(it.categoria);
       tr.innerHTML = `
         <td>
           <select onchange="onCategoriaChange(${it.uid}, this.value)">
-            ${cats.map(c=>`<option value="${escapeAttr(c)}" ${it.categoria===c?'selected':''}>${c}</option>`).join("")}
+            ${cats.map(c=>`<option value="${escapeAttr(c)}" ${it.categoria===c?'selected':''}>${escapeAttr(c)}</option>`).join("")}
           </select>
         </td>
         <td>
           <select onchange="onProductoChange(${it.uid}, this.value)">
-            ${opciones.map(p=>`<option value="${p.id}" ${it.productoId===p.id?'selected':''}>${escapeAttr(p.nombre)}</option>`).join("")}
+            ${opciones.map(p=>`<option value="${p.id}" ${it.productoId===p.id?'selected':''}>${escapeAttr(etiquetaProducto(p))}</option>`).join("")}
           </select>
         </td>
-        <td><input type="text" value="${escapeAttr(it.formato)}" onchange="onCampoItem(${it.uid},'formato',this.value)"></td>
         <td>
           <select onchange="onCampoItem(${it.uid},'unidad',this.value)">
-            ${["un","m2","rollo","gl","kg","m"].map(u=>`<option value="${u}" ${it.unidad===u?'selected':''}>${u}</option>`).join("")}
+            ${["un","m2","rollo","gl","kg","m","unidad"].map(u=>`<option value="${u}" ${it.unidad===u?'selected':''}>${u}</option>`).join("")}
           </select>
         </td>
+        <td class="celda-base">${formatoCLP(it.precioBase)}</td>
+        <td><input type="number" min="0" step="0.5" value="${it.margen}" onchange="onCampoItem(${it.uid},'margen',this.value)"></td>
+        <td class="celda-final">${formatoCLP(pf)}</td>
         <td><input type="number" min="0" step="1" value="${it.cantidad}" onchange="onCampoItem(${it.uid},'cantidad',this.value)"></td>
-        <td><input type="number" min="0" step="1" value="${it.precio}" onchange="onCampoItem(${it.uid},'precio',this.value)"></td>
-        <td class="celda-total">${formatoCLP(it.cantidad*it.precio)}</td>
+        <td class="celda-total">${formatoCLP(it.cantidad*pf)}</td>
         <td class="col-del"><button class="btn-del" onclick="quitarItem(${it.uid})" title="Quitar">✕</button></td>`;
     }
     body.appendChild(tr);
@@ -397,7 +542,7 @@ function escapeAttr(s){
   return String(s==null?"":s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
 }
 function calcularTotales(){
-  const neto = items.reduce((a,i)=>a + (Number(i.cantidad)||0)*(Number(i.precio)||0), 0);
+  const neto = items.reduce((a,i)=>a + (Number(i.cantidad)||0)*precioFinalDeItem(i), 0);
   const iva = Math.round(neto*0.19);
   const total = neto + iva;
   return {neto, iva, total};
@@ -421,10 +566,10 @@ function renderCatalogoAdmin(){
       <td><input type="text" value="${escapeAttr(p.formato)}" onchange="editarCatalogo('${p.id}','formato',this.value)"></td>
       <td>
         <select onchange="editarCatalogo('${p.id}','unidad',this.value)">
-          ${["un","m2","rollo","gl","kg","m"].map(u=>`<option value="${u}" ${p.unidad===u?'selected':''}>${u}</option>`).join("")}
+          ${["un","m2","rollo","gl","kg","m","unidad"].map(u=>`<option value="${u}" ${p.unidad===u?'selected':''}>${u}</option>`).join("")}
         </select>
       </td>
-      <td><input type="number" min="0" step="1" value="${p.precio}" onchange="editarCatalogo('${p.id}','precio',this.value)"></td>
+      <td><input type="number" min="0" step="0.01" value="${p.precioBase}" onchange="editarCatalogo('${p.id}','precioBase',this.value)"></td>
       <td><button class="btn-del" onclick="borrarProductoCatalogo('${p.id}')" title="Eliminar">✕</button></td>`;
     body.appendChild(tr);
   });
@@ -433,7 +578,7 @@ function renderCatalogoAdmin(){
 function editarCatalogo(id, campo, valor){
   const p = catalogo.find(x=>x.id===id);
   if(!p) return;
-  p[campo] = (campo==="precio") ? (Number(valor)||0) : valor;
+  p[campo] = (campo==="precioBase") ? (Number(valor)||0) : valor;
   guardarCatalogo();
   renderItems();
 }
@@ -445,7 +590,7 @@ function borrarProductoCatalogo(id){
   renderItems();
 }
 function agregarProductoCatalogo(){
-  const nuevo = {id:"cat_"+Date.now(), categoria:"Nueva categoría", nombre:"Nuevo producto", formato:"", unidad:"un", precio:0};
+  const nuevo = {id:"cat_"+Date.now(), categoria:"Nueva categoría", nombre:"Nuevo producto", formato:"", unidad:"un", precioBase:0};
   catalogo.push(nuevo);
   guardarCatalogo();
   renderCatalogoAdmin();
@@ -453,7 +598,7 @@ function agregarProductoCatalogo(){
   toast("Producto agregado. Edítalo con sus datos reales.");
 }
 function restablecerCatalogo(){
-  if(!confirm("Esto reemplaza el catálogo actual por el catálogo original de ejemplo. ¿Continuar?")) return;
+  if(!confirm("Esto reemplaza el catálogo actual por el catálogo original (todos los productos de las planillas). ¿Continuar?")) return;
   catalogo = JSON.parse(JSON.stringify(CATALOGO_DEFAULT));
   guardarCatalogo();
   renderCatalogoAdmin();
@@ -488,14 +633,17 @@ function importarCatalogo(ev){
   ev.target.value = "";
 }
 
-/* ============ NÚMERO DE COTIZACIÓN SUGERIDO ============ */
+/* ============ NÚMERO DE COTIZACIÓN: AAAAMMDD-NN (NN = correlativo del día) ============ */
 function sugerirNumero(){
   const hoy = new Date();
-  const yy = String(hoy.getFullYear()).slice(-2);
+  const yyyy = hoy.getFullYear();
   const mm = String(hoy.getMonth()+1).padStart(2,'0');
-  let contador = Number(localStorage.getItem(LS_CONTADOR)||"0") + 1;
-  localStorage.setItem(LS_CONTADOR, String(contador));
-  return yy+mm+"-"+String(contador).padStart(3,'0');
+  const dd = String(hoy.getDate()).padStart(2,'0');
+  const fechaStr = "" + yyyy + mm + dd;
+  const key = LS_CONTADOR_PREFIX + fechaStr;
+  let contador = Number(localStorage.getItem(key) || "0") + 1;
+  localStorage.setItem(key, String(contador));
+  return fechaStr + "-" + String(contador).padStart(2,'0');
 }
 
 /* ============ GENERACIÓN DE PDF ============ */
@@ -538,80 +686,96 @@ function descargarPDF(modo){
   const color = (modo==='color');
   const azul = [14,101,175];
   const azulOsc = [10,74,128];
+  const rojo = [228,35,19];
   const negro = [20,20,20];
-  const gris = [130,130,130];
+  const grisTxt = [110,110,110];
+  const azulFondo = [235,242,248];
 
-  // Logo
-  try{ doc.addImage(document.getElementById('logo_fuente').src, 'PNG', 15, 12, 50, 11.8); }catch(e){}
+  const PAG_W = doc.internal.pageSize.getWidth();
+  const M = 15; // margen izquierdo/derecho
+  const ANCHO = PAG_W - M*2;
 
-  doc.setFont("helvetica","normal");
-  doc.setFontSize(16);
-  doc.setTextColor(...negro);
-  doc.text("Cotización N° " + d.numero, 105, 34, {align:"center"});
+  // ---- Encabezado ----
+  try{ doc.addImage(document.getElementById('logo_fuente').src, 'PNG', M, 12, 50, 11.8); }catch(e){}
 
-  // Caja datos cliente
-  let y = 44;
-  doc.setDrawColor(...(color?azul:negro));
-  doc.setLineWidth(color?0.4:0.25);
-  doc.rect(15, y, 181, 26);
-  doc.setFontSize(10);
+  doc.setFont("helvetica","normal"); doc.setFontSize(9.5); doc.setTextColor(...grisTxt);
+  doc.text("N° " + d.numero, PAG_W - M, 15, {align:"right"});
+  doc.text("Fecha: " + d.fecha, PAG_W - M, 20, {align:"right"});
+
+  let y = 32;
+  doc.setFont("helvetica","bold"); doc.setFontSize(18);
+  doc.setTextColor(...(color?azulOsc:negro));
+  doc.text("COTIZACIÓN", M, y);
+  doc.setDrawColor(...rojo); doc.setLineWidth(0.8);
+  doc.line(M, y+2.5, PAG_W-M, y+2.5);
+
+  y += 10;
+  doc.setFont("helvetica","normal"); doc.setFontSize(9.5); doc.setTextColor(...grisTxt);
+  doc.text("Vendedor: " + d.vendedor + "   ·   Validez: " + (d.validez||"-"), M, y);
+
+  // ---- Caja datos cliente ----
+  y += 6;
+  const boxH = 26;
+  if(color){ doc.setFillColor(...azulFondo); doc.rect(M, y, ANCHO, boxH, "F"); }
+  doc.setDrawColor(...(color?azul:negro)); doc.setLineWidth(color?0.35:0.25);
+  doc.rect(M, y, ANCHO, boxH);
+  doc.setFontSize(10); doc.setTextColor(...negro);
   const lh = 6.2;
-  doc.setTextColor(...negro);
-  doc.text("Cliente", 18, y+lh); doc.text(": " + d.cliente, 40, y+lh);
-  doc.text("RUT", 130, y+lh); doc.text(": " + (d.rut||"-"), 145, y+lh);
-  doc.text("Atención", 18, y+lh*2); doc.text(": " + (d.atencion||"-"), 40, y+lh*2);
-  doc.text("Fecha", 130, y+lh*2); doc.text(": " + d.fecha, 145, y+lh*2);
-  doc.text("Correo", 18, y+lh*3); doc.text(": " + (d.correo||"-"), 40, y+lh*3);
+  const colB = M + (ANCHO*0.62);
+  doc.setFont("helvetica","bold"); doc.text("Cliente", M+3, y+lh); doc.setFont("helvetica","normal"); doc.text(": " + d.cliente, M+24, y+lh);
+  doc.setFont("helvetica","bold"); doc.text("RUT", colB, y+lh); doc.setFont("helvetica","normal"); doc.text(": " + (d.rut||"-"), colB+16, y+lh);
+  doc.setFont("helvetica","bold"); doc.text("Atención", M+3, y+lh*2); doc.setFont("helvetica","normal"); doc.text(": " + (d.atencion||"-"), M+24, y+lh*2);
+  doc.setFont("helvetica","bold"); doc.text("Fecha", colB, y+lh*2); doc.setFont("helvetica","normal"); doc.text(": " + d.fecha, colB+16, y+lh*2);
+  doc.setFont("helvetica","bold"); doc.text("Correo", M+3, y+lh*3); doc.setFont("helvetica","normal"); doc.text(": " + (d.correo||"-"), M+24, y+lh*3);
 
-  // Tabla de items
+  // ---- Tabla de items (solo precio final, nunca precio base ni %) ----
   const filas = items.map((it,idx)=>[
     String(idx+1),
-    it.nombre + (it.formato ? ("\n" + it.formato) : ""),
+    it.nombre + (it.formato && it.formato!=="-" ? ("\n" + it.formato) : ""),
     it.unidad,
     String(it.cantidad),
-    formatoCLP(it.precio),
-    formatoCLP(it.cantidad*it.precio)
+    formatoCLP(precioFinalDeItem(it)),
+    formatoCLP(it.cantidad*precioFinalDeItem(it))
   ]);
 
   doc.autoTable({
-    startY: y+30,
-    head: [["Ítem","Producto","Unidad","Cantidad","Precio ($)","Total ($)"]],
+    startY: y+boxH+6,
+    head: [["Ítem","Producto","Unidad","Cant.","Precio ($)","Total ($)"]],
     body: filas,
-    styles:{ font:"helvetica", fontSize:9.5, textColor: negro, lineColor: color?[220,224,227]:[190,190,190], lineWidth:0.15, cellPadding:2.4 },
-    headStyles: color ? { fillColor: azulOsc, textColor:[255,255,255], fontStyle:"bold" }
-                       : { fillColor:[255,255,255], textColor: negro, fontStyle:"bold", lineWidth:0.3, lineColor:[0,0,0] },
-    alternateRowStyles: color ? { fillColor:[245,248,251] } : { fillColor:[255,255,255] },
-    columnStyles:{ 0:{cellWidth:12, halign:"center"}, 1:{cellWidth:80}, 2:{cellWidth:18, halign:"center"}, 3:{cellWidth:20, halign:"center"}, 4:{cellWidth:26, halign:"right"}, 5:{cellWidth:26, halign:"right"} },
-    margin:{left:15, right:15}
+    styles:{ font:"helvetica", fontSize:9.5, textColor: negro, lineColor: color?[210,218,226]:[190,190,190], lineWidth:0.15, cellPadding:2.6 },
+    headStyles: color ? { fillColor: azulOsc, textColor:[255,255,255], fontStyle:"bold", fontSize:9 }
+                       : { fillColor:[255,255,255], textColor: negro, fontStyle:"bold", lineWidth:0.3, lineColor:[0,0,0], fontSize:9 },
+    alternateRowStyles: color ? { fillColor:[246,249,252] } : { fillColor:[255,255,255] },
+    columnStyles:{ 0:{cellWidth:13, halign:"center"}, 1:{cellWidth:75}, 2:{cellWidth:16, halign:"center"}, 3:{cellWidth:16, halign:"center"}, 4:{cellWidth:25, halign:"right"}, 5:{cellWidth:26, halign:"right"} },
+    margin:{left:M, right:M}
   });
 
   let y2 = doc.lastAutoTable.finalY + 6;
 
-  // Totales
-  const anchoBox = 70;
-  const xBox = 196 - anchoBox;
-  doc.setFontSize(10);
-  doc.setDrawColor(...(color?azul:negro));
-  doc.setLineWidth(0.25);
-  doc.text("Total Neto $", xBox, y2); doc.text(formatoCLP(neto), 196, y2, {align:"right"});
-  doc.text("19% IVA", xBox, y2+6); doc.text(formatoCLP(iva), 196, y2+6, {align:"right"});
-  doc.setLineWidth(0.4);
-  doc.line(xBox-2, y2+9, 196, y2+9);
-  doc.setFont("helvetica","bold");
-  doc.setFontSize(11.5);
-  if(color) doc.setTextColor(...azulOsc);
-  doc.text("TOTAL $", xBox, y2+15); doc.text(formatoCLP(total), 196, y2+15, {align:"right"});
-  doc.setFont("helvetica","normal");
-  doc.setTextColor(...negro);
-  doc.setFontSize(10);
+  // ---- Totales ----
+  const anchoBox = 74;
+  const xBox = (PAG_W-M) - anchoBox;
+  if(color){ doc.setFillColor(...azulFondo); doc.rect(xBox-4, y2-5, anchoBox+4, 22, "F"); }
+  doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(...negro);
+  doc.text("Total Neto $", xBox, y2); doc.text(formatoCLP(neto), PAG_W-M, y2, {align:"right"});
+  doc.text("19% IVA", xBox, y2+6); doc.text(formatoCLP(iva), PAG_W-M, y2+6, {align:"right"});
+  doc.setDrawColor(...(color?azul:negro)); doc.setLineWidth(0.4);
+  doc.line(xBox-2, y2+9, PAG_W-M, y2+9);
+  doc.setFont("helvetica","bold"); doc.setFontSize(13);
+  if(color) doc.setTextColor(...azulOsc); else doc.setTextColor(...negro);
+  doc.text("TOTAL $", xBox, y2+16); doc.text(formatoCLP(total), PAG_W-M, y2+16, {align:"right"});
+  doc.setFont("helvetica","normal"); doc.setTextColor(...negro); doc.setFontSize(10);
 
   y2 += 26;
 
-  // Condiciones comerciales
-  doc.setFont("helvetica","bold");
-  doc.text("Condiciones comerciales:", 15, y2);
-  doc.setFont("helvetica","normal");
-  y2 += 7;
+  // ---- Condiciones comerciales ----
+  doc.setFont("helvetica","bold"); doc.setFontSize(11.5);
+  doc.setTextColor(...(color?azulOsc:negro));
+  doc.text("CONDICIONES COMERCIALES", M, y2);
+  doc.setDrawColor(...rojo); doc.setLineWidth(0.5);
+  doc.line(M, y2+2, M+70, y2+2);
+  doc.setTextColor(...negro); doc.setFont("helvetica","normal"); doc.setFontSize(9.5);
+  y2 += 8;
   const condiciones = [
     ["Plazo de entrega", d.plazo || "-"],
     ["Lugar de entrega", d.lugar || "-"],
@@ -619,47 +783,53 @@ function descargarPDF(modo){
     ["Validez de la cotización", d.validez || "-"]
   ];
   condiciones.forEach(([label, valor])=>{
-    const texto = doc.splitTextToSize(valor, 140);
-    doc.text(label, 15, y2);
-    doc.text(":", 62, y2);
-    doc.text(texto, 66, y2);
-    y2 += 6 * texto.length + 1;
+    const texto = doc.splitTextToSize(valor, 138);
+    doc.setFont("helvetica","bold"); doc.text(label, M, y2);
+    doc.setFont("helvetica","normal"); doc.text(":", M+46, y2);
+    doc.text(texto, M+50, y2);
+    y2 += 5.6 * texto.length + 1.2;
   });
 
+  // ---- Datos bancarios ----
   y2 += 3;
-  doc.setDrawColor(...(color?azul:negro));
-  doc.setLineWidth(0.25);
-  doc.rect(15, y2, 181, 14);
+  if(color){ doc.setFillColor(248,249,250); doc.rect(M, y2, ANCHO, 15, "F"); }
+  doc.setDrawColor(...(color?azul:negro)); doc.setLineWidth(0.25);
+  doc.rect(M, y2, ANCHO, 15);
   doc.setFontSize(9);
-  doc.text("Orden de compra y transferencias a nombre de:", 18, y2+5.5);
-  doc.text(EMPRESA.rutEmpresa, 18, y2+10.5);
-  doc.text(EMPRESA.banco, 115, y2+5.5);
-  doc.text(EMPRESA.cuenta, 115, y2+10.5);
+  doc.setFont("helvetica","bold"); doc.text("Orden de compra y transferencias a nombre de:", M+3, y2+6);
+  doc.setFont("helvetica","normal"); doc.text(EMPRESA.rutEmpresa, M+3, y2+11.5);
+  doc.setFont("helvetica","bold"); doc.text(EMPRESA.banco, M+ANCHO*0.55, y2+6);
+  doc.setFont("helvetica","normal"); doc.text(EMPRESA.cuenta, M+ANCHO*0.55, y2+11.5);
 
-  y2 += 22;
+  y2 += 23;
   doc.setFontSize(9.5);
   const cierre = doc.splitTextToSize(
-    "Enviar comprobante a: " + EMPRESA.correoComprobante + "  ·  Teléfonos: " + EMPRESA.telefonos, 181);
-  doc.text(cierre, 15, y2);
-  y2 += 6 * cierre.length + 4;
+    "Enviar comprobante a: " + EMPRESA.correoComprobante + "   ·   Teléfonos: " + EMPRESA.telefonos, ANCHO);
+  doc.text(cierre, M, y2);
+  y2 += 5.6 * cierre.length + 4;
 
   const parrafo = doc.splitTextToSize(
-    "Sin otro particular e invitándolos a conocer más de nuestros productos para protección pasiva contra incendios, tabiques y aislación térmica-acústica en " + EMPRESA.web + ", les saluda atentamente;", 181);
-  doc.text(parrafo, 15, y2);
-  y2 += 6 * parrafo.length + 14;
+    "Sin otro particular e invitándolos a conocer más de nuestros productos para protección pasiva contra incendios, tabiques y aislación térmica-acústica en " + EMPRESA.web + ", les saluda atentamente;", ANCHO);
+  doc.text(parrafo, M, y2);
+  y2 += 5.6 * parrafo.length + 12;
 
-  doc.setFont("helvetica","bold");
-  doc.text(d.vendedor, 15, y2);
-  doc.setFont("helvetica","normal");
+  doc.setFont("helvetica","bold"); doc.setFontSize(10.5);
+  doc.text(d.vendedor, M, y2);
+  doc.setFont("helvetica","normal"); doc.setFontSize(10);
+  if(color) doc.setTextColor(...azul);
+  doc.text("WhatsApp: " + EMPRESA.whatsapp, M, y2+7);
+  doc.setTextColor(...negro);
 
+  // ---- Pie de página con marca ----
+  const pageH = doc.internal.pageSize.getHeight();
   if(color){
-    doc.setTextColor(...azul);
-    doc.setFontSize(10);
-    doc.text("WhatsApp: " + EMPRESA.whatsapp, 15, y2+10);
-    doc.setTextColor(...negro);
+    doc.setFillColor(...azulOsc);
+    doc.rect(0, pageH-10, PAG_W, 10, "F");
+    doc.setFontSize(8); doc.setTextColor(255,255,255);
+    doc.text("www.skintec.cl  ·  Protección pasiva contra incendios · Aislación térmica y acústica", PAG_W/2, pageH-4.5, {align:"center"});
   } else {
-    doc.setFontSize(10);
-    doc.text("WhatsApp: " + EMPRESA.whatsapp, 15, y2+10);
+    doc.setFontSize(8); doc.setTextColor(...grisTxt);
+    doc.text("www.skintec.cl  ·  Protección pasiva contra incendios · Aislación térmica y acústica", PAG_W/2, pageH-6, {align:"center"});
   }
 
   const nombreArchivo = "Cotizacion_" + d.numero.replace(/[^\w-]/g,"_") + (color?"_cliente":"_imprimir") + ".pdf";
@@ -670,6 +840,7 @@ function descargarPDF(modo){
 function init(){
   document.getElementById('f_fecha').value = hoyISO();
   document.getElementById('f_numero').value = sugerirNumero();
+  document.getElementById('f_margen_global').value = margenGlobalDefault;
   renderCatalogoAdmin();
   agregarItem(false);
 }
