@@ -54,7 +54,7 @@
   .margen-global .nota-inline{font-size:11.5px; color:var(--gris); flex:1; min-width:200px;}
 
   .table-scroll{width:100%; overflow-x:auto;}
-  table.items{width:100%; min-width:980px; border-collapse:collapse; margin-top:6px; font-size:13px;}
+  table.items{width:100%; min-width:1120px; border-collapse:collapse; margin-top:6px; font-size:13px;}
   table.items th{background:var(--azul-oscuro); color:#fff; text-align:left; padding:9px 7px; font-weight:500; font-size:11.5px; text-transform:uppercase; letter-spacing:.03em;}
   table.items td{padding:7px 6px; border-bottom:1px solid var(--gris-claro); vertical-align:top;}
   table.items tfoot td{border-top:2px solid var(--azul-oscuro); font-weight:600;}
@@ -83,7 +83,7 @@
   .acciones .btn{padding:15px 26px; font-size:15px;}
 
   details.admin summary{cursor:pointer; font-weight:600; color:var(--azul-oscuro); padding:6px 0;}
-  table.catalogo{width:100%; min-width:760px; border-collapse:collapse; font-size:13px; margin-top:12px;}
+  table.catalogo{width:100%; min-width:840px; border-collapse:collapse; font-size:13px; margin-top:12px;}
   table.catalogo th{background:var(--gris-claro); text-align:left; padding:7px 6px; font-size:11px; text-transform:uppercase;}
   table.catalogo td{padding:6px; border-bottom:1px solid #eee;}
   table.catalogo input, table.catalogo select{padding:6px 7px; font-size:12.5px;}
@@ -150,31 +150,32 @@
     <table class="items">
       <thead>
         <tr>
-          <th style="width:15%">Categoría</th>
+          <th style="width:9%">Archivo</th>
+          <th style="width:13%">Categoría</th>
           <th style="width:20%">Producto</th>
-          <th style="width:7%">Unidad</th>
-          <th style="width:10%">Precio Base</th>
-          <th style="width:8%">% Rec.</th>
-          <th style="width:10%">Precio Final</th>
-          <th style="width:8%">Cantidad</th>
-          <th style="width:10%">Total ($)</th>
+          <th style="width:6%">Unidad</th>
+          <th style="width:9%">Precio Base</th>
+          <th style="width:7%">% Rec.</th>
+          <th style="width:9%">Precio Final</th>
+          <th style="width:7%">Cantidad</th>
+          <th style="width:9%">Total ($)</th>
           <th class="col-del"></th>
         </tr>
       </thead>
       <tbody id="items_body"></tbody>
       <tfoot>
         <tr>
-          <td colspan="7" style="text-align:right;">Total Neto</td>
+          <td colspan="8" style="text-align:right;">Total Neto</td>
           <td id="t_neto">$0</td>
           <td></td>
         </tr>
         <tr>
-          <td colspan="7" style="text-align:right;">19% IVA</td>
+          <td colspan="8" style="text-align:right;">19% IVA</td>
           <td id="t_iva">$0</td>
           <td></td>
         </tr>
         <tr>
-          <td colspan="7" style="text-align:right; color:var(--azul-oscuro); font-size:15px;">TOTAL</td>
+          <td colspan="8" style="text-align:right; color:var(--azul-oscuro); font-size:15px;">TOTAL</td>
           <td id="t_total" style="color:var(--azul-oscuro); font-size:15px;">$0</td>
           <td></td>
         </tr>
@@ -222,7 +223,7 @@
       <div class="table-scroll">
       <table class="catalogo" id="tabla_catalogo">
         <thead>
-          <tr><th style="width:20%">Categoría (hoja de origen)</th><th style="width:26%">Producto</th><th style="width:22%">Formato</th><th style="width:9%">Unidad</th><th style="width:13%">Precio Base ($)</th><th style="width:6%"></th></tr>
+          <tr><th style="width:12%">Archivo</th><th style="width:17%">Categoría (hoja de origen)</th><th style="width:23%">Producto</th><th style="width:19%">Formato</th><th style="width:8%">Unidad</th><th style="width:12%">Precio Base ($)</th><th style="width:6%"></th></tr>
         </thead>
         <tbody id="catalogo_body"></tbody>
       </table>
@@ -262,102 +263,102 @@ const EMPRESA = {
    ============================================================================ */
 const CATALOGO_DEFAULT = [
   // ---- Lanas Javi.xlsx / hoja " Poli" ----
-  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Design)", formato:"Espesor 50 mm · Formato 1,2 x 25 m (rollo 30 m2)", unidad:"m2", precioBase:1690},
-  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Design)", formato:"Espesor 80 mm · Formato 1,2 x 12 m (rollo 14,4 m2)", unidad:"m2", precioBase:2438},
-  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Val Company)", formato:"Espesor 50 mm sin traslape · Formato 1,2 x 12 m (rollo 14,4 m2)", unidad:"m2", precioBase:1100},
-  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (RTK)", formato:"Espesor 80 mm · Formato 1,2 x 25 m (rollo 30 m2)", unidad:"m2", precioBase:2650},
-  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Malla soporte polipropileno", formato:"15 x 15 cm · Formato 1,5 x 1.000 m", unidad:"rollo", precioBase:115000},
-  {categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Cinta autoadhesiva polipropileno blanco", formato:"80 mm x 25 m (ancho x largo)", unidad:"rollo", precioBase:6990},
+  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Design)", formato:"Espesor 50 mm · Formato 1,2 x 25 m (rollo 30 m2)", unidad:"m2", precioBase:1690},
+  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Design)", formato:"Espesor 80 mm · Formato 1,2 x 12 m (rollo 14,4 m2)", unidad:"m2", precioBase:2438},
+  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (Val Company)", formato:"Espesor 50 mm sin traslape · Formato 1,2 x 12 m (rollo 14,4 m2)", unidad:"m2", precioBase:1100},
+  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Rollo Lana de Vidrio c/Polipropileno (RTK)", formato:"Espesor 80 mm · Formato 1,2 x 25 m (rollo 30 m2)", unidad:"m2", precioBase:2650},
+  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Malla soporte polipropileno", formato:"15 x 15 cm · Formato 1,5 x 1.000 m", unidad:"rollo", precioBase:115000},
+  {archivo:"Lanas", categoria:"Lana de Vidrio c/ Polipropileno (Poli)", nombre:"Cinta autoadhesiva polipropileno blanco", formato:"80 mm x 25 m (ancho x largo)", unidad:"rollo", precioBase:6990},
 
   // ---- Lanas Javi.xlsx / hoja "VAL Company" ----
-  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 80 kg/m3 · Espesor 50 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:6188},
-  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 100 kg/m3 · Espesor 50 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:7625},
-  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 80 kg/m3 · Espesor 80 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:11617},
-  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 140 kg/m3 · Espesor 50 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:13194},
-  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Velo Negro Importado (Nicolaides)", formato:"Densidad 35 kg/m3 · Espesor 50 mm · Panel 0,5 x 1,2 m", unidad:"m2", precioBase:6350},
-  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Rollo Lana Mineral de Roca c/malla una cara", formato:"Densidad 100 kg/m3 · Espesor 50 mm · Formato 5 x 0,6 m (3,0 m2)", unidad:"m2", precioBase:11850},
-  {categoria:"Lana Mineral Importada (VAL Company)", nombre:"Rollo Lana Mineral de Roca c/malla una cara", formato:"Densidad 100 kg/m3 · Espesor 100 mm · Formato 3 x 0,6 m (1,8 m2)", unidad:"m2", precioBase:18850.64},
+  {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 80 kg/m3 · Espesor 50 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:6188},
+  {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 100 kg/m3 · Espesor 50 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:7625},
+  {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 80 kg/m3 · Espesor 80 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:11617},
+  {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Lana Mineral Importado", formato:"Densidad 140 kg/m3 · Espesor 50 mm · Panel 0,6 x 1,2 m", unidad:"m2", precioBase:13194},
+  {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Panel Velo Negro Importado (Nicolaides)", formato:"Densidad 35 kg/m3 · Espesor 50 mm · Panel 0,5 x 1,2 m", unidad:"m2", precioBase:6350},
+  {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Rollo Lana Mineral de Roca c/malla una cara", formato:"Densidad 100 kg/m3 · Espesor 50 mm · Formato 5 x 0,6 m (3,0 m2)", unidad:"m2", precioBase:11850},
+  {archivo:"Lanas", categoria:"Lana Mineral Importada (VAL Company)", nombre:"Rollo Lana Mineral de Roca c/malla una cara", formato:"Densidad 100 kg/m3 · Espesor 100 mm · Formato 3 x 0,6 m (1,8 m2)", unidad:"m2", precioBase:18850.64},
 
   // ---- Lanas Javi.xlsx / hoja "Banda E Acústica" ----
-  {categoria:"Bandas Elastoacústicas", nombre:"Banda Elastoacústica Espuma Polietileno", formato:"Ancho 50 mm · Largo 30 m · Autoadhesiva", unidad:"rollo", precioBase:16830},
-  {categoria:"Bandas Elastoacústicas", nombre:"Banda Elastoacústica Espuma Polietileno", formato:"Ancho 70 mm · Largo 30 m · Autoadhesiva", unidad:"rollo", precioBase:22710},
+  {archivo:"Lanas", categoria:"Bandas Elastoacústicas", nombre:"Banda Elastoacústica Espuma Polietileno", formato:"Ancho 50 mm · Largo 30 m · Autoadhesiva", unidad:"rollo", precioBase:16830},
+  {archivo:"Lanas", categoria:"Bandas Elastoacústicas", nombre:"Banda Elastoacústica Espuma Polietileno", formato:"Ancho 70 mm · Largo 30 m · Autoadhesiva", unidad:"rollo", precioBase:22710},
 
   // ---- Lanas Javi.xlsx / hoja "Panel VN" ----
-  {categoria:"Panel Velo Negro (Ayrsa)", nombre:"Panel Velo Negro", formato:"Espesor 50 mm · Formato 1,2 x 2,4 m", unidad:"m2", precioBase:8200},
+  {archivo:"Lanas", categoria:"Panel Velo Negro (Ayrsa)", nombre:"Panel Velo Negro", formato:"Espesor 50 mm · Formato 1,2 x 2,4 m", unidad:"m2", precioBase:8200},
 
   // ---- Lanas Javi.xlsx / hoja "Panel LM" ----
-  {categoria:"Panel Lana Mineral (Nacional)", nombre:"Panel Lana Mineral", formato:"Densidad 80 kg/m3 · Espesor 50 mm · Panel 0,5 x 1,2 m", unidad:"m2", precioBase:7700},
-  {categoria:"Panel Lana Mineral (Nacional)", nombre:"Panel Lana Mineral", formato:"Densidad 120 kg/m3 · Espesor 50 mm · Panel 0,5 x 1,2 m", unidad:"m2", precioBase:12700},
+  {archivo:"Lanas", categoria:"Panel Lana Mineral (Nacional)", nombre:"Panel Lana Mineral", formato:"Densidad 80 kg/m3 · Espesor 50 mm · Panel 0,5 x 1,2 m", unidad:"m2", precioBase:7700},
+  {archivo:"Lanas", categoria:"Panel Lana Mineral (Nacional)", nombre:"Panel Lana Mineral", formato:"Densidad 120 kg/m3 · Espesor 50 mm · Panel 0,5 x 1,2 m", unidad:"m2", precioBase:12700},
 
   // ---- Lanas Javi.xlsx / hoja "Frazada Volcan" ----
-  {categoria:"Frazada Lana Mineral (Volcán)", nombre:"Frazada de Lana Mineral (malla una cara)", formato:"Densidad 100 kg/m3 · Espesor 100 mm · Panel 1,0 x 2,4 m", unidad:"m2", precioBase:22177},
-  {categoria:"Frazada Lana Mineral (Volcán)", nombre:"Frazada de Lana Mineral (malla una cara)", formato:"Densidad 100 kg/m3 · Espesor 100 mm · Rollo 3 x 0,6 m (1,8 m2)", unidad:"m2", precioBase:22177},
-  {categoria:"Frazada Lana Mineral (Volcán)", nombre:"Pallet (para despacho)", formato:"-", unidad:"un", precioBase:8000},
+  {archivo:"Lanas", categoria:"Frazada Lana Mineral (Volcán)", nombre:"Frazada de Lana Mineral (malla una cara)", formato:"Densidad 100 kg/m3 · Espesor 100 mm · Panel 1,0 x 2,4 m", unidad:"m2", precioBase:22177},
+  {archivo:"Lanas", categoria:"Frazada Lana Mineral (Volcán)", nombre:"Frazada de Lana Mineral (malla una cara)", formato:"Densidad 100 kg/m3 · Espesor 100 mm · Rollo 3 x 0,6 m (1,8 m2)", unidad:"m2", precioBase:22177},
+  {archivo:"Lanas", categoria:"Frazada Lana Mineral (Volcán)", nombre:"Pallet (para despacho)", formato:"-", unidad:"un", precioBase:8000},
 
   // ---- Lanas Javi.xlsx / hoja "Colchoneta ST" ----
-  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Libre", formato:"Espesor 40 mm R100 94 (bolsa 12 m2)", unidad:"m2", precioBase:3554},
-  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Libre", formato:"Espesor 50 mm R100 122 (bolsa 12 m2)", unidad:"m2", precioBase:3952},
-  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Libre", formato:"Espesor 80 mm R100 188 (bolsa 6 m2)", unidad:"m2", precioBase:6622},
-  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel una cara", formato:"Espesor 40 mm R100 95 (bolsa 12 m2)", unidad:"m2", precioBase:4214},
-  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel una cara", formato:"Espesor 50 mm R100 122 (bolsa 12 m2)", unidad:"m2", precioBase:5232},
-  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel una cara", formato:"Espesor 80 mm R100 188 (bolsa 6 m2)", unidad:"m2", precioBase:7159},
-  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel dos caras", formato:"Espesor 50 mm R100 122 (bolsa 12 m2)", unidad:"m2", precioBase:5758},
-  {categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel dos caras", formato:"Espesor 80 mm R100 188 (bolsa 6 m2)", unidad:"m2", precioBase:7938},
+  {archivo:"Lanas", categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Libre", formato:"Espesor 40 mm R100 94 (bolsa 12 m2)", unidad:"m2", precioBase:3554},
+  {archivo:"Lanas", categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Libre", formato:"Espesor 50 mm R100 122 (bolsa 12 m2)", unidad:"m2", precioBase:3952},
+  {archivo:"Lanas", categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Libre", formato:"Espesor 80 mm R100 188 (bolsa 6 m2)", unidad:"m2", precioBase:6622},
+  {archivo:"Lanas", categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel una cara", formato:"Espesor 40 mm R100 95 (bolsa 12 m2)", unidad:"m2", precioBase:4214},
+  {archivo:"Lanas", categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel una cara", formato:"Espesor 50 mm R100 122 (bolsa 12 m2)", unidad:"m2", precioBase:5232},
+  {archivo:"Lanas", categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel una cara", formato:"Espesor 80 mm R100 188 (bolsa 6 m2)", unidad:"m2", precioBase:7159},
+  {archivo:"Lanas", categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel dos caras", formato:"Espesor 50 mm R100 122 (bolsa 12 m2)", unidad:"m2", precioBase:5758},
+  {archivo:"Lanas", categoria:"Colchoneta ST Aislán", nombre:"Colchoneta Lana Mineral ST Aislán · Papel dos caras", formato:"Espesor 80 mm R100 188 (bolsa 6 m2)", unidad:"m2", precioBase:7938},
 
   // ---- Lanas Javi.xlsx / hoja "Lana de vidrio" (Aislanglass original) ----
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 40 mm R100/94 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:1758},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 50 mm R100/122 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:1394},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 50 mm R100/122 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:1394},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 60 mm R100/141 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:2080},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 80 mm R100/188 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:2712},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 90 mm R100/212 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:2758},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 100 mm R100/235 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:3362},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 120 mm R100/262 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:4015},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 140 mm R100/329 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:4967},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 160 mm R100/376 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:5675},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 40 mm R100/94 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:2537},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 50 mm R100/122 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:2537},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 60 mm R100/141 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:2682},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 80 mm R100/188 · 1,2 x 9,6 m (11,52 m2)", unidad:"m2", precioBase:3303},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 100 mm R100/235 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:3962},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 120 mm R100/282 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:4614},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 140 mm R100/329 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:6380},
-  {categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 160 mm R100/376 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:7290},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 40 mm R100/94 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:1758},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 50 mm R100/122 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:1394},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 50 mm R100/122 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:1394},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 60 mm R100/141 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:2080},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 80 mm R100/188 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:2712},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 90 mm R100/212 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:2758},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 100 mm R100/235 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:3362},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 120 mm R100/262 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:4015},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 140 mm R100/329 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:4967},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Libre", formato:"Espesor 160 mm R100/376 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:5675},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 40 mm R100/94 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:2537},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 50 mm R100/122 · 1,2 x 24 m (28,8 m2)", unidad:"m2", precioBase:2537},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 60 mm R100/141 · 1,2 x 12 m (14,4 m2)", unidad:"m2", precioBase:2682},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 80 mm R100/188 · 1,2 x 9,6 m (11,52 m2)", unidad:"m2", precioBase:3303},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 100 mm R100/235 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:3962},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 120 mm R100/282 · 1,2 x 7,5 m (9 m2)", unidad:"m2", precioBase:4614},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 140 mm R100/329 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:6380},
+  {archivo:"Lanas", categoria:"Lana de Vidrio Aislanglass (Original)", nombre:"Rollo Lana de Vidrio Aislanglass · Papel kraft una cara", formato:"Espesor 160 mm R100/376 · 1,2 x 5,5 m (6,6 m2)", unidad:"m2", precioBase:7290},
 
   // ---- Promat Javi.xlsx / hoja "Promat Septiembre 22" ----
-  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"6 x 1200 x 2400 mm (21 kg por placa)", unidad:"un", precioBase:38675},
-  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"8 x 1200 x 2400 mm (27 kg por placa)", unidad:"un", precioBase:51415},
-  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"10 x 1200 x 2400 mm (33 kg por placa)", unidad:"un", precioBase:59605},
-  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"12 x 1200 x 2400 mm (39 kg por placa)", unidad:"un", precioBase:71435},
-  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"15 x 1200 x 2400 mm (46 kg por placa)", unidad:"un", precioBase:90317},
-  {categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"20 x 1200 x 2400 mm (69 kg por placa)", unidad:"un", precioBase:120575},
-  {categoria:"Accesorios Promat", nombre:"Pasta para Juntas", formato:"Saco 25 kg (rendimiento ~350 gr x ml)", unidad:"un", precioBase:10831},
-  {categoria:"Accesorios Promat", nombre:"Promaseal A S", formato:"-", unidad:"un", precioBase:16242},
-  {categoria:"Accesorios Promat", nombre:"Bidón Impregnación", formato:"-", unidad:"un", precioBase:25935},
-  {categoria:"Accesorios Promat", nombre:"Promastop CC", formato:"Balde 12,5 kg", unidad:"un", precioBase:250613},
+  {archivo:"Promat", categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"6 x 1200 x 2400 mm (21 kg por placa)", unidad:"un", precioBase:38675},
+  {archivo:"Promat", categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"8 x 1200 x 2400 mm (27 kg por placa)", unidad:"un", precioBase:51415},
+  {archivo:"Promat", categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"10 x 1200 x 2400 mm (33 kg por placa)", unidad:"un", precioBase:59605},
+  {archivo:"Promat", categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"12 x 1200 x 2400 mm (39 kg por placa)", unidad:"un", precioBase:71435},
+  {archivo:"Promat", categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"15 x 1200 x 2400 mm (46 kg por placa)", unidad:"un", precioBase:90317},
+  {archivo:"Promat", categoria:"Promatect H (Protección al Fuego)", nombre:"Placa Promatect H", formato:"20 x 1200 x 2400 mm (69 kg por placa)", unidad:"un", precioBase:120575},
+  {archivo:"Promat", categoria:"Accesorios Promat", nombre:"Pasta para Juntas", formato:"Saco 25 kg (rendimiento ~350 gr x ml)", unidad:"un", precioBase:10831},
+  {archivo:"Promat", categoria:"Accesorios Promat", nombre:"Promaseal A S", formato:"-", unidad:"un", precioBase:16242},
+  {archivo:"Promat", categoria:"Accesorios Promat", nombre:"Bidón Impregnación", formato:"-", unidad:"un", precioBase:25935},
+  {archivo:"Promat", categoria:"Accesorios Promat", nombre:"Promastop CC", formato:"Balde 12,5 kg", unidad:"un", precioBase:250613},
 
   // ---- Volcanita Javi.xlsx / hoja " PY Junio 22" ----
-  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo ST", formato:"10 x 1200 x 2400 mm", unidad:"unidad", precioBase:4476.04},
-  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo ST", formato:"12,5 x 1200 x 2400 mm", unidad:"unidad", precioBase:6009.28},
-  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RH", formato:"12,5 x 1200 x 2400 mm", unidad:"unidad", precioBase:9550.28},
-  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RF", formato:"12,5 x 1200 x 2400 mm", unidad:"unidad", precioBase:6874.96},
-  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo ST", formato:"15 x 1200 x 2400 mm", unidad:"unidad", precioBase:6594.04},
-  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RH", formato:"15 x 1200 x 2400 mm", unidad:"unidad", precioBase:10412.04},
-  {categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RF", formato:"15 x 1200 x 2400 mm", unidad:"unidad", precioBase:7546},
+  {archivo:"Volcanita", categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo ST", formato:"10 x 1200 x 2400 mm", unidad:"unidad", precioBase:4476.04},
+  {archivo:"Volcanita", categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo ST", formato:"12,5 x 1200 x 2400 mm", unidad:"unidad", precioBase:6009.28},
+  {archivo:"Volcanita", categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RH", formato:"12,5 x 1200 x 2400 mm", unidad:"unidad", precioBase:9550.28},
+  {archivo:"Volcanita", categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RF", formato:"12,5 x 1200 x 2400 mm", unidad:"unidad", precioBase:6874.96},
+  {archivo:"Volcanita", categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo ST", formato:"15 x 1200 x 2400 mm", unidad:"unidad", precioBase:6594.04},
+  {archivo:"Volcanita", categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RH", formato:"15 x 1200 x 2400 mm", unidad:"unidad", precioBase:10412.04},
+  {archivo:"Volcanita", categoria:"Placas Yeso-Cartón (Volcanita/Knauf)", nombre:"Placa Yeso-Cartón KNAUF Tipo RF", formato:"15 x 1200 x 2400 mm", unidad:"unidad", precioBase:7546},
 
   // ---- Volcanita Javi.xlsx / hoja "Safe Board" ----
-  {categoria:"Placas Cementicias SAFEBOARD", nombre:"Placa SAFEBOARD", formato:"0,625 x 2,5 m · Espesor 12,5 mm", unidad:"unidad", precioBase:79498.125},
-  {categoria:"Placas Cementicias SAFEBOARD", nombre:"Masilla SAFEBOARD", formato:"Tineta de 5 kg", unidad:"unidad", precioBase:27192},
+  {archivo:"Volcanita", categoria:"Placas Cementicias SAFEBOARD", nombre:"Placa SAFEBOARD", formato:"0,625 x 2,5 m · Espesor 12,5 mm", unidad:"unidad", precioBase:79498.125},
+  {archivo:"Volcanita", categoria:"Placas Cementicias SAFEBOARD", nombre:"Masilla SAFEBOARD", formato:"Tineta de 5 kg", unidad:"unidad", precioBase:27192},
 
   // ---- Volcanita Javi.xlsx / hoja "Impact" ----
-  {categoria:"Placas Cementicias IMPACT", nombre:"Placa IMPACT", formato:"1200 x 2400 mm · Espesor 12,5 mm", unidad:"unidad", precioBase:3845},
-  {categoria:"Placas Cementicias IMPACT", nombre:"Placa IMPACT", formato:"1200 x 2400 mm · Espesor 15 mm", unidad:"unidad", precioBase:3937},
+  {archivo:"Volcanita", categoria:"Placas Cementicias IMPACT", nombre:"Placa IMPACT", formato:"1200 x 2400 mm · Espesor 12,5 mm", unidad:"unidad", precioBase:3845},
+  {archivo:"Volcanita", categoria:"Placas Cementicias IMPACT", nombre:"Placa IMPACT", formato:"1200 x 2400 mm · Espesor 15 mm", unidad:"unidad", precioBase:3937},
 
   // ---- Volcanita Javi.xlsx / hoja "Cleaneo" ----
-  {categoria:"Placas Acústicas CLEANEO", nombre:"Placa CLEANEO 8/15/20 R Circular Aleatoria Plus 12,5", formato:"1200 x 2000 mm UFF V/B (64)", unidad:"m2", precioBase:22847},
+  {archivo:"Volcanita", categoria:"Placas Acústicas CLEANEO", nombre:"Placa CLEANEO 8/15/20 R Circular Aleatoria Plus 12,5", formato:"1200 x 2000 mm UFF V/B (64)", unidad:"m2", precioBase:22847},
 
   // ---- Común a varias hojas ----
-  {categoria:"Servicios y Otros", nombre:"Flete a obra", formato:"Opcional, según ubicación", unidad:"gl", precioBase:95000}
+  {archivo:"Otros", categoria:"Servicios y Otros", nombre:"Flete a obra", formato:"Opcional, según ubicación", unidad:"gl", precioBase:95000}
 ].map((p,i)=>({id:"cat_"+i, ...p}));
 
 const LS_CATALOGO = "skintec_cotizador_catalogo_v2";
@@ -388,6 +389,12 @@ function toast(msg){
 function formatoCLP(n){
   n = Math.round(Number(n)||0);
   return "$" + n.toLocaleString('es-CL');
+}
+function archivosUnicos(){
+  return [...new Set(catalogo.map(p=>p.archivo))];
+}
+function categoriasDeArchivo(archivo){
+  return [...new Set(catalogo.filter(p=>p.archivo===archivo).map(p=>p.categoria))];
 }
 function categoriasUnicas(){
   return [...new Set(catalogo.map(p=>p.categoria))];
@@ -421,6 +428,7 @@ function nuevoItem(personalizado){
   return {
     uid: seqItem++,
     personalizado: !!personalizado,
+    archivo: "",
     categoria: "",
     productoId: "",
     nombre: "", formato:"", unidad:"un",
@@ -430,7 +438,9 @@ function nuevoItem(personalizado){
 function agregarItem(personalizado){
   const it = nuevoItem(personalizado);
   if(!personalizado){
-    const cats = categoriasUnicas();
+    const archivos = archivosUnicos();
+    it.archivo = archivos[0] || "";
+    const cats = categoriasDeArchivo(it.archivo);
     it.categoria = cats[0] || "";
     const opciones = productosDeCategoria(it.categoria);
     if(opciones.length){
@@ -443,6 +453,20 @@ function agregarItem(personalizado){
 }
 function quitarItem(uid){
   items = items.filter(i=>i.uid!==uid);
+  renderItems();
+}
+function onArchivoChange(uid, valor){
+  const it = items.find(i=>i.uid===uid);
+  it.archivo = valor;
+  const cats = categoriasDeArchivo(valor);
+  it.categoria = cats[0] || "";
+  const opciones = productosDeCategoria(it.categoria);
+  if(opciones.length){
+    const p = opciones[0];
+    it.productoId = p.id; it.nombre = p.nombre; it.formato = p.formato; it.unidad = p.unidad; it.precioBase = p.precioBase;
+  } else {
+    it.productoId=""; it.nombre=""; it.formato=""; it.precioBase=0;
+  }
   renderItems();
 }
 function onCategoriaChange(uid, valor){
@@ -486,14 +510,14 @@ function actualizarFilaCalculada(uid){
 function renderItems(){
   const body = document.getElementById('items_body');
   body.innerHTML = "";
-  const cats = categoriasUnicas();
+  const archivos = archivosUnicos();
   items.forEach(it=>{
     const tr = document.createElement('tr');
     tr.setAttribute('data-uid', it.uid);
     const pf = precioFinalDeItem(it);
     if(it.personalizado){
       tr.innerHTML = `
-        <td><span style="font-size:12px; color:var(--gris);">Personalizado</span></td>
+        <td colspan="2"><span style="font-size:12px; color:var(--gris);">Personalizado</span></td>
         <td>
           <input type="text" placeholder="Nombre del producto" value="${escapeAttr(it.nombre)}" onchange="onCampoItem(${it.uid},'nombre',this.value)" style="margin-bottom:4px;">
           <input type="text" placeholder="Formato (opcional)" value="${escapeAttr(it.formato)}" onchange="onCampoItem(${it.uid},'formato',this.value)">
@@ -510,17 +534,25 @@ function renderItems(){
         <td class="celda-total">${formatoCLP(it.cantidad*pf)}</td>
         <td class="col-del"><button class="btn-del" onclick="quitarItem(${it.uid})" title="Quitar">✕</button></td>`;
     } else {
+      const cats = categoriasDeArchivo(it.archivo);
       const opciones = productosDeCategoria(it.categoria);
       tr.innerHTML = `
+        <td>
+          <select onchange="onArchivoChange(${it.uid}, this.value)">
+            ${archivos.map(a=>`<option value="${escapeAttr(a)}" ${it.archivo===a?'selected':''}>${escapeAttr(a)}</option>`).join("")}
+          </select>
+        </td>
         <td>
           <select onchange="onCategoriaChange(${it.uid}, this.value)">
             ${cats.map(c=>`<option value="${escapeAttr(c)}" ${it.categoria===c?'selected':''}>${escapeAttr(c)}</option>`).join("")}
           </select>
         </td>
         <td>
-          <select onchange="onProductoChange(${it.uid}, this.value)">
+          <select onchange="onProductoChange(${it.uid}, this.value)" style="margin-bottom:4px;">
             ${opciones.map(p=>`<option value="${p.id}" ${it.productoId===p.id?'selected':''}>${escapeAttr(etiquetaProducto(p))}</option>`).join("")}
           </select>
+          <input type="text" placeholder="Nombre (editable)" value="${escapeAttr(it.nombre)}" onchange="onCampoItem(${it.uid},'nombre',this.value)" style="margin-bottom:4px;">
+          <input type="text" placeholder="Formato (editable)" value="${escapeAttr(it.formato)}" onchange="onCampoItem(${it.uid},'formato',this.value)">
         </td>
         <td>
           <select onchange="onCampoItem(${it.uid},'unidad',this.value)">
@@ -561,6 +593,7 @@ function renderCatalogoAdmin(){
   catalogo.forEach(p=>{
     const tr = document.createElement('tr');
     tr.innerHTML = `
+      <td><input type="text" value="${escapeAttr(p.archivo)}" onchange="editarCatalogo('${p.id}','archivo',this.value)"></td>
       <td><input type="text" value="${escapeAttr(p.categoria)}" onchange="editarCatalogo('${p.id}','categoria',this.value)"></td>
       <td><input type="text" value="${escapeAttr(p.nombre)}" onchange="editarCatalogo('${p.id}','nombre',this.value)"></td>
       <td><input type="text" value="${escapeAttr(p.formato)}" onchange="editarCatalogo('${p.id}','formato',this.value)"></td>
@@ -590,7 +623,7 @@ function borrarProductoCatalogo(id){
   renderItems();
 }
 function agregarProductoCatalogo(){
-  const nuevo = {id:"cat_"+Date.now(), categoria:"Nueva categoría", nombre:"Nuevo producto", formato:"", unidad:"un", precioBase:0};
+  const nuevo = {id:"cat_"+Date.now(), archivo:"Otros", categoria:"Nueva categoría", nombre:"Nuevo producto", formato:"", unidad:"un", precioBase:0};
   catalogo.push(nuevo);
   guardarCatalogo();
   renderCatalogoAdmin();
@@ -696,25 +729,21 @@ function descargarPDF(modo){
   const ANCHO = PAG_W - M*2;
 
   // ---- Encabezado ----
-  try{ doc.addImage(document.getElementById('logo_fuente').src, 'PNG', M, 12, 50, 11.8); }catch(e){}
+  try{ doc.addImage(document.getElementById('logo_fuente').src, 'PNG', M, 16, 50, 11.8); }catch(e){}
 
   doc.setFont("helvetica","normal"); doc.setFontSize(9.5); doc.setTextColor(...grisTxt);
-  doc.text("N° " + d.numero, PAG_W - M, 15, {align:"right"});
-  doc.text("Fecha: " + d.fecha, PAG_W - M, 20, {align:"right"});
+  doc.text("N° " + d.numero, PAG_W - M, 19, {align:"right"});
+  doc.text("Fecha: " + d.fecha, PAG_W - M, 24, {align:"right"});
 
-  let y = 32;
+  let y = 42;
   doc.setFont("helvetica","bold"); doc.setFontSize(18);
   doc.setTextColor(...(color?azulOsc:negro));
   doc.text("COTIZACIÓN", M, y);
   doc.setDrawColor(...rojo); doc.setLineWidth(0.8);
-  doc.line(M, y+2.5, PAG_W-M, y+2.5);
-
-  y += 10;
-  doc.setFont("helvetica","normal"); doc.setFontSize(9.5); doc.setTextColor(...grisTxt);
-  doc.text("Vendedor: " + d.vendedor + "   ·   Validez: " + (d.validez||"-"), M, y);
+  doc.line(M, y+3, PAG_W-M, y+3);
 
   // ---- Caja datos cliente ----
-  y += 6;
+  y += 14;
   const boxH = 26;
   if(color){ doc.setFillColor(...azulFondo); doc.rect(M, y, ANCHO, boxH, "F"); }
   doc.setDrawColor(...(color?azul:negro)); doc.setLineWidth(color?0.35:0.25);
@@ -753,17 +782,19 @@ function descargarPDF(modo){
   let y2 = doc.lastAutoTable.finalY + 6;
 
   // ---- Totales ----
-  const anchoBox = 74;
-  const xBox = (PAG_W-M) - anchoBox;
-  if(color){ doc.setFillColor(...azulFondo); doc.rect(xBox-4, y2-5, anchoBox+4, 22, "F"); }
+  const anchoBox = 78;
+  const padBox = 5;
+  const boxRight = PAG_W - M;
+  const boxLeft = boxRight - anchoBox;
+  if(color){ doc.setFillColor(...azulFondo); doc.rect(boxLeft, y2-6, anchoBox, 25, "F"); }
   doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(...negro);
-  doc.text("Total Neto $", xBox, y2); doc.text(formatoCLP(neto), PAG_W-M, y2, {align:"right"});
-  doc.text("19% IVA", xBox, y2+6); doc.text(formatoCLP(iva), PAG_W-M, y2+6, {align:"right"});
+  doc.text("Total Neto $", boxLeft+padBox, y2); doc.text(formatoCLP(neto), boxRight-padBox, y2, {align:"right"});
+  doc.text("19% IVA", boxLeft+padBox, y2+6); doc.text(formatoCLP(iva), boxRight-padBox, y2+6, {align:"right"});
   doc.setDrawColor(...(color?azul:negro)); doc.setLineWidth(0.4);
-  doc.line(xBox-2, y2+9, PAG_W-M, y2+9);
+  doc.line(boxLeft+padBox-2, y2+9, boxRight-padBox, y2+9);
   doc.setFont("helvetica","bold"); doc.setFontSize(13);
   if(color) doc.setTextColor(...azulOsc); else doc.setTextColor(...negro);
-  doc.text("TOTAL $", xBox, y2+16); doc.text(formatoCLP(total), PAG_W-M, y2+16, {align:"right"});
+  doc.text("TOTAL $", boxLeft+padBox, y2+16); doc.text(formatoCLP(total), boxRight-padBox, y2+16, {align:"right"});
   doc.setFont("helvetica","normal"); doc.setTextColor(...negro); doc.setFontSize(10);
 
   y2 += 26;
@@ -832,7 +863,10 @@ function descargarPDF(modo){
     doc.text("www.skintec.cl  ·  Protección pasiva contra incendios · Aislación térmica y acústica", PAG_W/2, pageH-6, {align:"center"});
   }
 
-  const nombreArchivo = "Cotizacion_" + d.numero.replace(/[^\w-]/g,"_") + (color?"_cliente":"_imprimir") + ".pdf";
+  const sanitizarNombre = (s) => String(s||"").replace(/[\\/:*?"<>|]/g,"").replace(/\s+/g," ").trim();
+  const clienteArchivo = sanitizarNombre(d.cliente) || "Cliente";
+  const baseArchivo = clienteArchivo + " " + d.numero;
+  const nombreArchivo = color ? (baseArchivo + ".pdf") : (baseArchivo + " (imprimir).pdf");
   doc.save(nombreArchivo);
 }
 
