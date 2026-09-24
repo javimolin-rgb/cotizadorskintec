@@ -37,3 +37,12 @@ El catálogo de productos (panel "Gestionar catálogo") se guarda en el
 navegador de cada computador, no en GitHub. Si trabajas desde más de un
 computador o navegador, usa los botones "exportar catálogo" e
 "importar catálogo" dentro del cotizador para mantenerlos iguales.
+
+ÓRDENES DE COMPRA
+-----------------
+Arriba hay dos pestañas: "Cotizaciones" y "Órdenes de compra".
+En "Órdenes de compra" llenas los datos del proveedor, los productos
+(puedes elegirlos del mismo catálogo; se completan con el Precio Base
+como precio de compra, editable) y las condiciones, y descargas el PDF
+en versión color o para imprimir. El N° se sugiere como OC-AAMMDD-NN.
+Los proveedores usados se recuerdan en este navegador para autocompletar.
